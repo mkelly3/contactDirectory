@@ -9,7 +9,7 @@ const initdb = async () =>
                 console.log('todos database already exists');
                 return;
             }
-            db.createOjbectStore('todos', { keyPath: 'id', autoIncrement: true })
+            db.createObjectStore('todos', { keyPath: 'id', autoIncrement: true })
             console.log('todos database created');
         },
     });
@@ -27,15 +27,25 @@ export const postDb = async (name, home, cell, email)  => {
 
 // TODO: Complete the getDb() function below:
 export const getDb = async () => {
-  
+    console.log("Got all Todos");
+    const todosDb = await open('todosDB');
+    const tx = todosDb.transaction('todos','readonly');
+    const store = tx.objectStore('todos');
+    const request = store.getAll();
+    const result = await request;
+    console.log(result)
+    return result;
 };
 
 // TODO: Complete the deleteDb() function below:
 export const deleteDb = async (id) => {
-  
+    const todosDB = await openDB('todosDB',1);
+    const tx = todosDB.transaction('todos','readwrite');
+    const store = tx.objectStore('todos');
+    const request = store.delete(id);
+    const result = await request;
+    console.log('deleted',result);
+    return result;
 };
 
 initdb();
-
-dadada
-dfdfsdf

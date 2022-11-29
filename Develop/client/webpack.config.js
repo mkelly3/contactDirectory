@@ -1,3 +1,4 @@
+
 const path = require('path');
 
 module.exports = () => {
@@ -11,12 +12,11 @@ module.exports = () => {
 
     // TODO: Add the correct output
     output: {
-      
-    },
 
+    },
     // TODO: Add the correct plugins
     plugins: [
-     
+
     ],
 
     // TODO: Add the correct modules
